@@ -1,7 +1,9 @@
+let day1_input = @"./day1_input.txt"
+
 // file:string -> int list
 let day1_numbers file = 
     System.IO.File.ReadAllText file
-    |> fun line -> Seq.toList (line.Split "\r\n")
+    |> fun line -> Seq.toList (line.Split "\n")  // \r\n on windows \n on mac?
     |> List.map (fun s -> int s)
     |> List.sort;;
 
@@ -21,7 +23,7 @@ let rec find_two_numbers_that_add_up_to_2020 numbers =
                     | (x,y,z) -> (x,y,z)
     | []        -> raise (System.ArgumentException("no numbers sum to 2020"));;
 
-day1_numbers @"C:\Users\Greg\source\advent-of-code\day1_input.txt"
+day1_numbers day1_input
 |> find_two_numbers_that_add_up_to_2020
 |> (fun answer -> match answer with // int * int * int -> unit
                     | (a,b,c) -> printfn "answer: %d x %d is %d" a b c);;
@@ -48,7 +50,7 @@ let rec find_three_numbers_that_add_up_to_2020 numbers =
         | _             -> raise (System.ArgumentException("other error 1"))
     check_number numbers;;
 
-day1_numbers @"C:\Users\Greg\source\advent-of-code\day1_input.txt"
+day1_numbers day1_input
 |> find_three_numbers_that_add_up_to_2020
 |> (fun answer -> match answer with // int * int * int * int -> unit
                     | (a,b,c,d) -> printfn "answer: %d x %d x %d is %d" a b c d);;
