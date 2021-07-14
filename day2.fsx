@@ -2,7 +2,7 @@ open System.Text.RegularExpressions;;
 
 let day2Input file = 
     System.IO.File.ReadAllText file
-    |> fun lines -> Seq.toList (lines.Split "\r\n")
+    |> fun lines -> Seq.toList (lines.Split "\r\n") // change to \n on Mac
     |> List.map (fun x ->
         (Regex.Match(x, @"(\d{1,3})-(\d{1,3})\s(\w):\s(\w*)")
         |> fun m -> m.Groups
