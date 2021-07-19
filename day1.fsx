@@ -3,7 +3,7 @@ let day1_input = @"./day1_input.txt"
 // file:string -> int list
 let day1_numbers file = 
     System.IO.File.ReadAllText file
-    |> fun line -> Seq.toList (line.Split "\n")  // \r\n on windows \n on mac?
+    |> fun line -> Seq.toList (line.Split System.Environment.NewLine)
     |> List.map (fun s -> int s)
     |> List.sort;;
 
