@@ -1,5 +1,7 @@
 // For all the code I'm afraid of deleting.  I am a hoarder.
 
+let slopesTest = [|1;5;7;3;8;9;4|]
+Array.reduce (*) slopesTest |> (fun answer -> printfn "slopes test answer: %A" answer);;
 
  //   |> List.map (fun m -> m.Groups) // -> GroupCollection list
  //   |> List.map (fun gc -> gc.Values |> Seq.map (fun item -> item |> string)) // -> ...Generic.IEnumerable<Group> list
