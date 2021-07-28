@@ -1,6 +1,6 @@
 open System
 
-let textFileToLineSeq file =
+let textFileToLines file =
     IO.File.ReadAllText file
     |> fun lines -> lines.Split Environment.NewLine
 
@@ -22,7 +22,7 @@ let tobogganTrajectory slope (right,down) =
                         traverse (rightIndex + right) (currentLine + down) (if x = '#' then count + 1 else count))
     traverse right down 0;;
 
-textFileToLineSeq @"./day3_input.txt"
+textFileToLines @"./day3_input.txt"
     |> (fun lines  -> tobogganTrajectory lines (3,1))
     |> (fun answer -> printfn "answer: %A" answer);;
 
@@ -34,6 +34,6 @@ let tobogganTrajectories trajectories slope : Int64 =
         | _               -> raise (ArgumentException("invalid trajectories"))
     multiply trajectories 1L
 
-textFileToLineSeq @"./day3_input.txt"
+textFileToLines @"./day3_input.txt"
     |> tobogganTrajectories [(1,1);(3,1);(5,1);(7,1);(1,2)]
     |> (fun answer -> printfn "answer: %A" answer);;
